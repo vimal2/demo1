@@ -1,0 +1,10 @@
+<div class="products" style="border: 5px solid #d55; padding:1em;">
+    <h2>Products</h2>
+    <app-product-add (productAdded)="onProductAdded($event)"></app-product-add>
+    <table>
+        <tr>
+            <td><app-product-list [products]="products" (productSelected)="onProductSelected($event)"></app-product-list></td>
+            <td><app-product-view [product]="selectedProduct"></app-product-view></td>
+        </tr>
+    </table>
+</div>

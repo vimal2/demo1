@@ -1,0 +1,9 @@
+<div style="border: 5px solid #d55; padding:1em;margin-bottom:1em;">
+    <h3>Add Product</h3>
+    <form (submit)="addProduct()">
+        <input type="text" placeholder="Title" [(ngModel)]="title" name="title">
+        <input type="number" placeholder="Price" [(ngModel)]="price" name="price">
+        <textarea name="description" [(ngModel)]="description"></textarea>
+        <button type="submit">Add</button>
+    </form>
+</div>

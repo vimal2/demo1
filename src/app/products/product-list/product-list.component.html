@@ -1,0 +1,18 @@
+<div class="products" style="border: 5px solid rgb(85, 96, 221); padding:1em;">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let product of products">
+            <td>{{product.id}}</td>
+            <td>{{product.title}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td><button (click)="viewProduct(product.id)">View</button></td>
+        </tr>
+    </table>
+</div>
