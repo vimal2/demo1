@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import Product from 'src/app/model/product.model';
+import { ProductService } from 'src/app/product.service';
 
 @Component({
   selector: 'app-product-add',
@@ -12,12 +13,19 @@ export class ProductAddComponent {
   price: number = 0;
   description: string = '';
 
-  @Output() productAdded = new EventEmitter<Product>();
+  // @Output() productAdded = new EventEmitter<Product>();
+  constructor(private productService: ProductService) { }
 
   addProduct() {
     console.log('Adding product:', this.title, this.price, this.description);
 
-    this.productAdded.emit({
+    // this.productAdded.emit({
+    //   title: this.title,
+    //   price: this.price,
+    //   description: this.description
+    // });
+
+    this.productService.addProduct({
       title: this.title,
       price: this.price,
       description: this.description

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import Product from 'src/app/model/product.model';
+import { ProductService } from 'src/app/product.service';
 
 @Component({
   selector: 'app-product-view',
@@ -8,11 +9,38 @@ import Product from 'src/app/model/product.model';
 })
 export class ProductViewComponent {
 
-  @Input() product: Product  = {
+  // @Input() product: Product  = {
+  //   id: 0,
+  //   title: '',
+  //   price: 0,
+  //   description: ''
+  // };
+
+  product: Product  = {
     id: 0,
     title: '',
     price: 0,
     description: ''
   };
+
+  @Input() id: number = 0;
+
+  constructor(private productService: ProductService) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ProductViewComponent received new ID:', this.id);
+    const product = this.productService.getProductById(this.id);
+    if (product) {
+      this.product = product;
+    } else {
+      // If no product found for the given ID, reset to default empty product
+      this.product = {
+        id: 0,
+        title: '',
+        price: 0,
+        description: ''
+      };
+    }
+  }
 
 }
